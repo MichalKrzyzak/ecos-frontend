@@ -1,12 +1,35 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span>Welcome to {{title}}!</span>
+    <button mat-icon-button>
+      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+    </button>
+    <h1>ECOS</h1>
+    <span class="menu-spacer"></span>
+    <div>
+      <a [routerLink]="'/students'" mat-button> Students </a>
+      <a [routerLink]="'/teachers'" mat-button> Teachers </a>
+      <a [routerLink]="'/fields-of-study'" mat-button> Fields of Study </a>
+    </div>
   </mat-toolbar-row>
+
   <mat-toolbar-row>
-    <button mat-button>Students</button>
-    <button mat-button>Teachers</button>
-    <button mat-button>Fields of study</button>
+    <span style="font-size: 12px;">Easy College Online System - to make management a pleasure.</span>
   </mat-toolbar-row>
 </mat-toolbar>
 
-<students-table></students-table>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <mat-nav-list>
+      <a [routerLink]="'/students'" mat-button> Students </a>
+      <a [routerLink]="'/teachers'" mat-button> Teachers </a>
+      <a [routerLink]="'/fields-of-study'" mat-button> Fields of Study </a>
+      <a (click)="sidenav.toggle()" href="" mat-list-item mat-list-item>Close</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 88vh;">
+
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

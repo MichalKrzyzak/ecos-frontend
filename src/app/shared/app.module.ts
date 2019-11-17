@@ -10,6 +10,8 @@ import {MatButtonModule, MatCardModule, MatInputModule, MatListModule, MatToolba
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {StudentsService} from "../service/students.service";
+import {MatIconModule} from "@angular/material/icon";
+import {MatSidenavModule} from "@angular/material/sidenav";
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import {StudentsService} from "../service/students.service";
     MatListModule,
     MatToolbarModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatIconModule,
+    MatSidenavModule
   ],
   providers: [StudentsService],
   bootstrap: [AppComponent]
