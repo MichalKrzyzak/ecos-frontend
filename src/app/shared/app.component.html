@@ -1,8 +1,5 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <button mat-icon-button>
-      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
-    </button>
     <h1>ECOS</h1>
     <span class="menu-spacer"></span>
     <div>
@@ -11,25 +8,7 @@
       <a [routerLink]="'/fields-of-study'" mat-button> Fields of Study </a>
     </div>
   </mat-toolbar-row>
-
   <mat-toolbar-row>
     <span style="font-size: 12px;">Easy College Online System - to make management a pleasure.</span>
   </mat-toolbar-row>
 </mat-toolbar>
-
-<mat-sidenav-container>
-  <mat-sidenav #sidenav>
-    <mat-nav-list>
-      <a [routerLink]="'/students'" mat-button> Students </a>
-      <a [routerLink]="'/teachers'" mat-button> Teachers </a>
-      <a [routerLink]="'/fields-of-study'" mat-button> Fields of Study </a>
-      <a (click)="sidenav.toggle()" href="" mat-list-item mat-list-item>Close</a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <div style="height: 88vh;">
-
-      <router-outlet></router-outlet>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>

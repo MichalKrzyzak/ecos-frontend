@@ -31,6 +31,11 @@
       <td mat-cell *matCellDef="let student"> {{student.fieldOfStudy}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="isActive">
+      <th mat-header-cell *matHeaderCellDef> Active</th>
+      <td mat-cell *matCellDef="let student"> {{student.isActive}} </td>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
