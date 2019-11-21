@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
-import {Student} from "../../model/students/student.model";
+import {Student} from "../../model/student.model";
 import {catchError, retry} from "rxjs/operators";
 
 @Injectable()
@@ -19,14 +19,6 @@ export class StudentsService {
     })
   }
 
-  public createStudent(student): Observable<Student> {
-    console.log("Creating student: " + student)
-    return this.http.post<Student>(this.studentBaseUrl, JSON.stringify(student), this.httpOptions).pipe(
-      retry(1),
-      catchError(this.errorHandl)
-    )
-  }
-
   public getAllStudents(): Observable<Student> {
     console.log("Fetching all students...")
     return this.http.get<Student>(this.studentBaseUrl).pipe(
@@ -38,6 +30,14 @@ export class StudentsService {
   public getStudentById(id): Observable<Student> {
     console.log("Fetching student by id " + id);
     return this.http.get<Student>(this.studentBaseUrl + '/id/' + id).pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    )
+  }
+
+  public createStudent(student): Observable<Student> {
+    console.log("Creating student: " + student)
+    return this.http.post<Student>(this.studentBaseUrl, JSON.stringify(student), this.httpOptions).pipe(
       retry(1),
       catchError(this.errorHandl)
     )

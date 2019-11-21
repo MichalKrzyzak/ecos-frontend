@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {StudentsService} from "../../../service/students/students.service";
 import {MatTableDataSource} from "@angular/material/table";
-import {Student} from "../../../model/students/student.model";
+import {Student} from "../../../model/student.model";
+import {SelectionModel} from "@angular/cdk/collections";
 
 @Component({
   selector: 'students-table',
@@ -10,8 +11,8 @@ import {Student} from "../../../model/students/student.model";
 })
 export class StudentsTableComponent implements OnInit {
   studentsDataSource: MatTableDataSource<Student>
-  displayedColumns = ['id', 'firstName', 'lastName', 'collegeId', 'peselNumber', 'fieldOfStudy', 'isActive']
-  isVisible: boolean = false;
+  displayedColumns = ['select', 'id', 'firstName', 'lastName', 'collegeId', 'peselNumber', 'fieldOfStudy', 'active']
+  selection = new SelectionModel<Student>(true, []);
 
   constructor(private studentsService: StudentsService) {
   }
@@ -28,4 +29,26 @@ export class StudentsTableComponent implements OnInit {
     this.loadStudents()
   }
 
+  applyFilter(filterValue: string) {
+    this.studentsDataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.studentsDataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  masterToggle() {
+    this.isAllSelected() ?
+      this.selection.clear() :
+      this.studentsDataSource.data.forEach(row => this.selection.select(row));
+  }
+
+  checkboxLabel(row?: Student): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
+  }
 }

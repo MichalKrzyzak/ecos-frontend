@@ -5,5 +5,5 @@ export interface Student {
   collegeId: number;
   peselNumber: number;
   fieldOfStudy: string;
-  isActive: boolean;
+  active: boolean;
 }

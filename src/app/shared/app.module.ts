@@ -1,10 +1,9 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
-import {AppRoutingModule} from './app-routing.module';
+import {AppRoutingModule, routingComponents} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from "@angular/common/http";
-import {StudentsTableComponent} from '../component/table/students/students-table.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatButtonModule, MatCardModule, MatInputModule, MatListModule, MatToolbarModule} from "@angular/material";
 import {MatTableModule} from "@angular/material/table";
@@ -12,11 +11,15 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {StudentsService} from "../service/students/students.service";
 import {MatIconModule} from "@angular/material/icon";
 import {MatSidenavModule} from "@angular/material/sidenav";
+import { AddStudentFormComponent } from '../component/forms/add-student-form/add-student-form.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
     AppComponent,
-    StudentsTableComponent
+    routingComponents,
+    AddStudentFormComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,9 @@ import {MatSidenavModule} from "@angular/material/sidenav";
     MatTableModule,
     MatPaginatorModule,
     MatIconModule,
-    MatSidenavModule
+    MatSidenavModule,
+    ReactiveFormsModule,
+    MatCheckboxModule
   ],
   providers: [StudentsService],
   bootstrap: [AppComponent]
