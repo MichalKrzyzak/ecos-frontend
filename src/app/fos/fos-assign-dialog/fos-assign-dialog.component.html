@@ -1,0 +1,19 @@
+<div mat-dialog-content>
+  {{message}}
+  <br>
+  <mat-radio-group>
+    <mat-radio-button value="1" (change)="onButtonChange('Yes')">Tak</mat-radio-button>
+    <mat-radio-button value="2" (change)="onButtonChange('No')">Nie</mat-radio-button>
+  </mat-radio-group>
+  <mat-form-field [hidden]="!whetherToAdd" style="max-width: 100%;">
+    <mat-label>Kierunek</mat-label>
+    <mat-select [(ngModel)]="this.selectedFieldOfStudy" >
+      <mat-option *ngFor="let fieldOfStudy of fieldsOfStudy" [value]="fieldOfStudy.fieldOfStudy">
+        {{fieldOfStudy.fieldOfStudy}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button class="btn btn-ecos-white" (click)="closeDialog()" [hidden]="!isButtonVisible">Zamknij okno</button>
+</div>

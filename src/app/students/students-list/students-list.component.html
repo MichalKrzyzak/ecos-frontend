@@ -1,0 +1,42 @@
+<div class="card shadow">
+  <div class="card-header bg-dark ecos-head">
+    {{pageTitle}}
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <label>
+        <input class="form-control" style="margin-left: 20px" type="text" [(ngModel)]="listFilter"
+               placeholder="Wyszukaj"/>
+      </label>
+    </div>
+    <div>
+      <button class="btn btn-ecos-dark" [routerLink]="'/student/add'">Dodaj studenta</button>
+    </div>
+    <div class="table-responsive">
+      <table class="table" *ngIf="students && students">
+        <thead>
+        <tr class="ecos-column-name">
+          <th>Imię</th>
+          <th>Nazwisko</th>
+          <th>E-Mail</th>
+          <th>CollegeID</th>
+          <th>Status studenta?</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let student of filterStudents">
+          <td>{{student?.personalData?.firstName}}</td>
+          <td>{{student?.personalData?.lastName}}</td>
+          <td>{{student?.email}}</td>
+          <td>{{student?.collegeId}}</td>
+          <td>{{student?.active ? "Tak" : "Nie"}}</td>
+          <td>
+            <button class="btn btn-ecos-dark" [routerLink]="'/student/' + student.id">Szczegóły</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+<div class="card shadow" *ngIf="student && student.personalData">
+  <div class="card-header bg-dark ecos-head">
+    <h5>{{student.personalData.firstName + ' ' + student.personalData.lastName}}</h5>
+<!--    <h6>{{ TODO wyświetlić główny kierunek studenta }}</h6>-->
+  </div>
+  <div class="card-body">
+    <mat-tab-group>
+      <mat-tab label="Dane osobowe">
+        <fieldset [disabled]="!isEditable">
+          <div class="row" style="max-width: 500px">
+            <div class="flex-column" style="margin: 15px 0 0 15px;">
+              <label>Imię</label>
+              <div class="form-group">
+                <input type="text" class="form-control ecos-form-field"[(ngModel)]="this.student.personalData.firstName">
+              </div>
+              <label>Nazwisko</label>
+              <div class="form-group">
+                <input type="text" class="form-control ecos-form-field" [(ngModel)]="this.student.personalData.lastName">
+              </div>
+              <label>PESEL</label>
+              <div class="form-group">
+                <input type="text" class="form-control ecos-form-field" [(ngModel)]="this.student.personalData.peselNumber">
+              </div>
+            </div>
+            <div class="flex-column" style="margin: 15px 0 0 15px;">
+              <label>Nr albumu</label>
+              <div class="form-group">
+                <input type="text" class="form-control ecos-form-field" [(ngModel)]="this.student.collegeId">
+              </div>
+              <label>E-mail</label>
+              <div class="form-group">
+                <input type="text" class="form-control ecos-form-field" [(ngModel)]="this.student.email">
+              </div>
+              <label>Status studenta</label>
+                <mat-select [(value)]="this.student.active" [disabled]="!isEditable" [placeholder]="this.student.active ? 'Tak' : 'Nie'">
+                  <mat-option value="true">Tak</mat-option>
+                  <mat-option value="false">Nie</mat-option>
+                </mat-select>
+            </div>
+          </div>
+        </fieldset>
+      </mat-tab>
+      <mat-tab label="Dane adresowe">
+        <fieldset [disabled]="!isEditable">
+          <div class="row" style="max-width: 500px">
+            <div class="flex-column" style="margin: 15px 0 0 15px;">
+              <label>Ulica</label>
+              <div class="form-group">
+                <input type="text" class="form-control ecos-form-field" [(ngModel)]="this.student.correspondenceAddress.addressLine1">
+              </div>
+              <label>Nr domu</label>
+              <div class="form-group">
+                <input type="text" class="form-control ecos-form-field" [(ngModel)]="this.student.correspondenceAddress.addressLine2">
+              </div>
+              <label>Nr mieszkania</label>
+              <div class="form-group">
+                <input type="text" class="form-control ecos-form-field" [(ngModel)]="this.student.correspondenceAddress.addressLine3">
+              </div>
+            </div>
+            <div class="flex-column" style="margin: 15px 0 0 15px;">
+              <label>Kod pocztowy</label>
+              <div class="form-group">
+                <input type="text" class="form-control ecos-form-field" [(ngModel)]="this.student.correspondenceAddress.zipCode">
+              </div>
+              <label>Miasto</label>
+              <div class="form-group">
+                <input type="text" class="form-control ecos-form-field" [(ngModel)]="this.student.correspondenceAddress.city">
+              </div>
+              <label>Województwo</label>
+              <div class="form-group">
+                <input type="text" class="form-control ecos-form-field" [(ngModel)]="this.student.correspondenceAddress.voivodeship">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </mat-tab>
+      <mat-tab label="Przedmioty">
+        <!-- TODO dodać wyświetlanie się wszystkich przedmiotów studenta jako lista (nie pola) -->
+      </mat-tab>
+      <mat-tab label="Oceny">
+        <!-- TODO dla każdego przedmiotu pobrać extension-panel każdego assignment i dla każdego assignment pobrać listę grades -->
+      </mat-tab>
+    </mat-tab-group>
+    <div class="btn-group">
+      <button class="btn btn-ecos-white" (click)="onBack()"><i class="fa fa-chevron-left"></i> Powrót</button>
+      <button class="btn btn-ecos-white" *ngIf="!isEditable" (click)="editData()">Edytuj</button>
+      <button class="btn btn-ecos-white" *ngIf="isEditable" (click)="saveData()">Zapisz</button>
+      <button class="btn btn-ecos-white" (click)="deactivateStudent()">Dezaktywuj studenta</button>
+    </div>
+  </div>
+</div>
+
