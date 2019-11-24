@@ -1,14 +1,40 @@
-<div style="text-align: center">
-  <mat-form-field>
-    <input matInput placeholder="Imię" required>
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Nazwisko" required>
-  </mat-form-field>
-  <br>
-  <mat-form-field>
-    <input matInput placeholder="PESEL" [formControl]="peselNumber" required>
-    <mat-error *ngIf="peselNumber.invalid">{{getErrorMessage()}}</mat-error>
-  </mat-form-field>
-  <br>
+<div>
+  <form [formGroup]="createStudentForm" (ngSubmit)="submitStudent()" novalidate>
+    <mat-form-field>
+      <input matInput placeholder="Imię" required formControlName="firstName" [(ngModel)]="student.firstName" [ngClass]="{'is-invalid': submitted && formControls.firstName.errors}">
+      <mat-error *ngIf="submitted && formControls.firstName.errors" class="invalid-feedback">Imię jest wymagane!</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input matInput placeholder="Nazwisko" required formControlName="lastName" [(ngModel)]="student.lastName" [ngClass]="{'is-invalid': submitted && formControls.lastName.errors}">
+      <mat-error *ngIf="submitted && formControls.lastName.errors" class="invalid-feedback">Nazwisko jest wymagane!</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input matInput placeholder="PESEL" required formControlName="peselNumber" [(ngModel)]="student.peselNumber" [ngClass]="{'is-invalid': submitted && formControls.peselNumber.errors}">
+      <mat-error *ngIf="peselNumber.invalid" class="invalid-feedback">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input matInput placeholder="Nr. albumu" required formControlName="collegeId" [(ngModel)]="student.collegeId" [ngClass]="{'is-invalid': submitted && formControls.collegeId.errors}">
+      <mat-error *ngIf="submitted && formControls.collegeId.errors" class="invalid-feedback">Numer albumu jest wymagany!</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input matInput placeholder="Kierunek studiów" formControlName="fieldOfStudy" [(ngModel)]="student.fieldOfStudy">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input matInput placeholder="Rok studiów" formControlName="yearOfStudy" [(ngModel)]="student.yearOfStudy">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-select placeholder="Status studenta" [(ngModel)]="default" required formControlName="active">
+        <mat-option value="true">Tak</mat-option>
+        <mat-option value="false">Nie</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button type="submit" (click)="submitStudent()">Dodaj studenta</button>
+  </form>
 </div>

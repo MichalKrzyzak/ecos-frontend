@@ -1,8 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {StudentsService} from "../../../service/students/students.service";
 import {MatTableDataSource} from "@angular/material/table";
 import {Student} from "../../../model/student.model";
-import {SelectionModel} from "@angular/cdk/collections";
+import {MatSort} from "@angular/material/sort";
+import {MatPaginator} from "@angular/material/paginator";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'students-table',
@@ -10,45 +12,48 @@ import {SelectionModel} from "@angular/cdk/collections";
   styleUrls: ['./students-table.component.css']
 })
 export class StudentsTableComponent implements OnInit {
-  studentsDataSource: MatTableDataSource<Student>
-  displayedColumns = ['select', 'id', 'firstName', 'lastName', 'collegeId', 'peselNumber', 'fieldOfStudy', 'active']
-  selection = new SelectionModel<Student>(true, []);
+  student = new Student();
+  studentsDataSource: MatTableDataSource<Student>;
+  displayedColumns = ['collegeId', 'firstName', 'lastName', 'peselNumber', 'fieldOfStudy', 'yearOfStudy', 'active', 'actions'];
+  isLoadingResults = false;
 
-  constructor(private studentsService: StudentsService) {
+  constructor(private studentsService: StudentsService,
+              private router: Router) {
   }
 
-  loadStudents(): void {
+  getStudents(): void {
+    this.isLoadingResults = true;
     this.studentsService.getAllStudents()
       .subscribe((students) => {
         // @ts-ignore
-        this.studentsDataSource = new MatTableDataSource(students);
+        this.studentsDataSource.data = students;
+        this.isLoadingResults = false;
       })
   }
 
+  @ViewChild('scheduledOrdersPaginator', {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
+
   ngOnInit(): void {
-    this.loadStudents()
+    this.getStudents()
+    this.studentsDataSource = new MatTableDataSource();
+    this.studentsDataSource.paginator = this.paginator;
+    this.studentsDataSource.sort = this.sort;
   }
 
   applyFilter(filterValue: string) {
     this.studentsDataSource.filter = filterValue.trim().toLowerCase();
-  }
 
-  isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.studentsDataSource.data.length;
-    return numSelected === numRows;
-  }
-
-  masterToggle() {
-    this.isAllSelected() ?
-      this.selection.clear() :
-      this.studentsDataSource.data.forEach(row => this.selection.select(row));
-  }
-
-  checkboxLabel(row?: Student): string {
-    if (!row) {
-      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
+    if (this.studentsDataSource.paginator) {
+      this.studentsDataSource.paginator.firstPage();
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
+  }
+
+  getStudentDetails(id: number) {
+    this.router.navigate(['/student-details/' + id]);
+  }
+
+  addStudentForm() {
+    this.router.navigate(['students/add']);
   }
 }

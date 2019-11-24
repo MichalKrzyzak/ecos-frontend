@@ -10,3 +10,20 @@
   right: 0;
   background: #eee;
 }
+
+.home-redirect {
+  display: block;
+  font-size: 2em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  text-decoration: none;
+  top: 17px;
+  letter-spacing: 3px;
+  font-family: fontawesome;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

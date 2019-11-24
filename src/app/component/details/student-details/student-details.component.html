@@ -1,0 +1,13 @@
+<div *ngIf="student">
+  <div>
+    <mat-label>Name: </mat-label> {{student.firstName}}
+  </div>
+  <div>
+    <mat-label>Age: </mat-label> {{student.lastName}}
+  </div>
+  <div>
+    <mat-label>Active: </mat-label> {{student.active}}
+  </div>
+  <span class="button is-small btn-primary" *ngIf='student.active' (click)='updateActive(false)'>Inactive</span>
+  <span class="button is-small btn-primary" *ngIf='!student.active' (click)='updateActive(true)'>Active</span>
+</div>

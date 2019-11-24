@@ -1,14 +1,29 @@
+div.table {
+  padding: 30px;
+}
+
 table {
   width: 100%;
   padding: 30px;
   font-weight: 400;
+  box-shadow: 0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12);
+}
+
+.mat-header-cell {
+  color: rgba(0,0,0,.54);
+  font-size: 12px;
+  font-weight: 500;
 }
 
 .mat-form-field {
-  font-size: 14px;
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  font-size: inherit;
   width: 100%;
-  padding: 30px;
   font-weight: 400;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+  border-top: .84375em solid transparent;
 }
 
 .mat-column-position {
@@ -25,4 +40,14 @@ table {
 
 .mat-column-select {
   overflow: initial;
+}
+
+.btn-space {
+  margin-right: 20px;
+  text-align: right;
+}
+
+.loader {
+  left: 50%;
+  margin-left: -4em;
 }

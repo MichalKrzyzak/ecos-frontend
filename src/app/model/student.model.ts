@@ -1,4 +1,4 @@
-export interface Student {
+export class Student {
   id: string;
   firstName: string;
   lastName: string;
@@ -6,4 +6,5 @@ export interface Student {
   peselNumber: number;
   fieldOfStudy: string;
   active: boolean;
+  yearOfStudy: string;
 }

@@ -1,9 +1,8 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <h1><b>Easy College Online System</b></h1>
+    <a [routerLink]="'/'" routerLinkActive="active" class=".home-redirect"><b>Easy College Online System</b></a>
     <span class="menu-spacer"></span>
     <div>
-      <a [routerLink]="'/'" routerLinkActive="active" mat-button> Home </a>
       <a [routerLink]="'/students-list'" routerLinkActive="active" mat-button> Students </a>
       <a [routerLink]="'/teachers-list'" routerLinkActive="active" mat-button> Teachers </a>
       <a [routerLink]="'/fields-of-study-list'" routerLinkActive="active" mat-button> Fields of Study </a>

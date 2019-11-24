@@ -36,7 +36,7 @@ export class StudentsService {
   }
 
   public createStudent(student): Observable<Student> {
-    console.log("Creating student: " + student)
+    console.log("Creating student: " + Student)
     return this.http.post<Student>(this.studentBaseUrl, JSON.stringify(student), this.httpOptions).pipe(
       retry(1),
       catchError(this.errorHandl)
