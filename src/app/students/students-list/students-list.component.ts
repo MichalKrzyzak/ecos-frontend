@@ -20,7 +20,6 @@ export class StudentsListComponent implements OnInit {
 
   constructor(studentService: StudentsService) {
     this.studentsService = studentService;
-
   }
 
   ngOnInit(): void {

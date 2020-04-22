@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import "~font-awesome/css/font-awesome.min.css";
 
 div.card-header {
@@ -14,26 +15,95 @@ div.card {
   margin-top: 10px
 }
 
-.ecos-login {
-  max-width: 400px;
-  margin: 2em auto;
-  text-align: center;
-}
-
 .ecos-head {
-  color: rgba(255,255,255,275);
+  color: rgba(255, 255, 255, 275);
 }
 
 .ecos-column-name {
   color: rgb(74, 80, 86);
 }
 
-.btn-ecos {
-  color:rgba(255,255,255,275);
-  background-color:rgb(74, 80, 86);
-  border-color:rgb(74, 80, 86);
+.btn-ecos-dark {
+  color: rgba(255, 255, 255, 0.79);
+  background-color: rgb(74, 80, 86);
+  border-color: rgb(74, 80, 86);
+  text-align: center;
+  margin: 5px;
 }
 
-.btn-ecos:hover {
-  color: aliceblue;
+.btn-ecos-dark:hover {
+  color: #fff;
+}
+
+.btn-ecos-white {
+  color: #6c757d;
+  border-color: #6c757d;
+  margin: 5px;
+}
+
+.btn-ecos-white:focus {
+  box-shadow: 0 0 0 .2rem rgba(74, 80, 86, .5)
+}
+
+.btn-ecos-white:hover {
+  color: #fff;
+  background-color: rgba(74, 80, 86, 1);
+  border-color: rgb(74, 80, 86);
+}
+
+.shadow {
+  -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.mat-tab-group {
+  margin-bottom: 48px;
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: #465056 !important;
+}
+
+.mat-form-field {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.mat-form-field .mat-form-field {
+  display: inline-block;
+  width: 100%;
+  vertical-align: middle;
+}
+
+.mat-form-field .mat-form-field:nth-child(1) {
+  margin-right: 10px;
+}
+
+.mat-focused .mat-form-field-label {
+  color: #465056 !important;
+}
+
+.mat-form-field-ripple {
+  background-color: #465056 !important;
+}
+
+.mat-dialog-actions {
+  justify-content: center;
+}
+
+.mat-radio-button {
+  display: flex;
+  margin: 10px 15px;
+  justify-content: center;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+  border-color:rgb(70, 80, 86);
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle{
+  color:rgb(70, 80, 86);
+  background-color:rgb(70, 80, 86) ;
 }

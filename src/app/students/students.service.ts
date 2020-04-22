@@ -39,15 +39,15 @@ export class StudentsService implements IIdOperationService<IStudent> {
   }
 
   create(student: IStudent): Observable<IStudent> {
-    console.log('Creating student: ' + student);
+    console.log('Creating student: ' + JSON.stringify(student));
     return this.http.post<IStudent>(this.studentBaseUrl, JSON.stringify(student), this.httpOptions).pipe(
       retry(1),
       catchError(this.errorHandler)
     );
   }
 
-  updateById(id, data): Observable<IStudent> {
-    console.log('Updating student: ' + id);
+  updateById(id, data: IStudent): Observable<IStudent> {
+    console.log('Updating student: ' + JSON.stringify(data));
     return this.http.put<IStudent>(this.studentBaseUrl + '/id/' + id, JSON.stringify(data), this.httpOptions).pipe(
       retry(1),
       catchError(this.errorHandler)

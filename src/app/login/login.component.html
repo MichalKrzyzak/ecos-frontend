@@ -1,7 +1,18 @@
-<div>
-  <div class="card-header bg-dark ecos-head ecos-login">
-    Login
+<div class="wrapper">
+  <div id="formContent">
+    <div id="formHeader" class="card-header">
+      Zaloguj
+    </div>
+
+    <form>
+      <input type="text" id="login" name="login" placeholder="login" onfocus="this.placeholder = ''" onblur="this.placeholder = 'login'">
+      <input type="text" id="password" name="login" placeholder="hasło" onfocus="this.placeholder = ''" onblur="this.placeholder = 'hasło'">
+      <button type="submit" class="btn btn-ecos-dark">Zaloguj</button>
+    </form>
+
+    <div id="formFooter">
+      <a class="underlineHover" [routerLink]="'/'">Zapomniałeś hasła?</a>
+    </div>
+
   </div>
 </div>
-
-<p>login works!</p>

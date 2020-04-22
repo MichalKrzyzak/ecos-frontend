@@ -1,16 +1,16 @@
-<div class="card">
+<div class="card shadow">
   <div class="card-header bg-dark ecos-head">
     {{pageTitle}}
   </div>
   <div class="card-body">
     <div class="row">
-      <div class="col-md-2">Wyszukaj:</div>
-      <div>
-        <label>
-          <input type="text"
-                 [(ngModel)]="listFilter"/>
-        </label>
-      </div>
+      <label>
+        <input class="form-control" style="margin-left: 20px" type="text" [(ngModel)]="listFilter"
+               placeholder="Wyszukaj"/>
+      </label>
+    </div>
+    <div>
+      <button class="btn btn-ecos-dark" [routerLink]="'/student/add'">Dodaj studenta</button>
     </div>
     <div class="table-responsive">
       <table class="table" *ngIf="students && students">
@@ -32,7 +32,7 @@
           <td>{{student?.collegeId}}</td>
           <td>{{student?.active ? "Tak" : "Nie"}}</td>
           <td>
-            <button class="btn btn-ecos" [routerLink]="'/student/' + student.id">Szczegóły</button>
+            <button class="btn btn-ecos-dark" [routerLink]="'/student/' + student.id">Szczegóły</button>
           </td>
         </tr>
         </tbody>
