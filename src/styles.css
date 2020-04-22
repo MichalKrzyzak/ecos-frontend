@@ -1,47 +1,39 @@
-@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
-.mat-card {
-  text-align: -webkit-center;
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~font-awesome/css/font-awesome.min.css";
+
+div.card-header {
+  font-size: large;
 }
 
-.demo-toolbar {
-  display: flex;
-  align-items: center;
-  width: 100%;
+div.card {
+  margin-top: 10px
 }
 
-.demo-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
+.table {
+  margin-top: 10px
 }
 
-.demo-full-width {
-  width: 100%;
-}
-
-body {
-  margin: 0;
-  font-family: Roboto, sans-serif;
-}
-
-mat-card {
-  max-width: 80%;
+.ecos-login {
+  max-width: 400px;
   margin: 2em auto;
   text-align: center;
 }
 
-mat-toolbar-row {
-  justify-content: space-between;
+.ecos-head {
+  color: rgba(255,255,255,275);
 }
 
-.done {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  color: white;
+.ecos-column-name {
+  color: rgb(74, 80, 86);
 }
 
-.content-center {
-  text-align: -webkit-center;
+.btn-ecos {
+  color:rgba(255,255,255,275);
+  background-color:rgb(74, 80, 86);
+  border-color:rgb(74, 80, 86);
+}
+
+.btn-ecos:hover {
+  color: aliceblue;
 }

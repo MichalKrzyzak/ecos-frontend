@@ -1,0 +1,6 @@
+<div class="card" *ngIf="student && student.personalData">
+  <div class="card-header">
+    {{student.personalData.firstName + ' ' + student.personalData.lastName}}
+  </div>
+  <button class="btn btn-outline-secondary" (click)="onBack()" style="width: 100px"><i class="fa fa-chevron-left"></i> Powrót</button>
+</div>
