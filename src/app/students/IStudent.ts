@@ -8,7 +8,7 @@ export interface IStudent {
   email: string;
   correspondenceAddress: ICorrespondenceAddress;
   collegeId: number;
-  fieldsOfStudy: IFieldOfStudy[];
+  fieldOfStudy: IFieldOfStudy[];
   grades: IGrades[];
   active: boolean;
 }

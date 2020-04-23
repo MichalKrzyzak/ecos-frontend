@@ -32,6 +32,7 @@ import { TeachersListComponent } from './teachers/teachers-list/teachers-list.co
 import { TeachersDetailsComponent } from './teachers/teachers-details/teachers-details.component';
 import { FosListComponent } from './fos/fos-list/fos-list.component';
 import { FosAddComponent } from './fos/fos-add/fos-add.component';
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { FosAddComponent } from './fos/fos-add/fos-add.component';
     MatCheckboxModule,
     MatRadioModule,
     MatSelectModule,
+    MatMenuModule,
   ],
   entryComponents: [
     FosAssignDialogComponent

@@ -3,6 +3,10 @@
     <div id="formHeader" class="card-header">
       Dodaj studenta
     </div>
+    <mat-form-field>
+      <mat-label>Nr albumu</mat-label>
+      <input [(ngModel)]="this.studentToAdd.collegeId" matInput id="collegeIdNo" disabled>
+    </mat-form-field>
       <mat-accordion>
         <mat-expansion-panel>
           <mat-expansion-panel-header>
@@ -32,8 +36,8 @@
             </mat-form-field>
 
             <mat-form-field>
-              <mat-label>Nr albumu</mat-label>
-              <input [(ngModel)]="this.studentToAdd.collegeId" matInput id="collegeIdNo" disabled>
+              <mat-label>Nr telefonu</mat-label>
+              <input [(ngModel)]="this.personalData.phoneNumber" matInput type="text" required>
             </mat-form-field>
           </li>
         </mat-expansion-panel>

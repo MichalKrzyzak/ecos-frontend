@@ -17,6 +17,7 @@ export class StudentsAddComponent implements OnInit {
     firstName: string;
     lastName: string;
     peselNumber: string;
+    phoneNumber: string;
   };
   correspondenceAddress: ICorrespondenceAddress = new class implements ICorrespondenceAddress {
     addressLine1: string;
