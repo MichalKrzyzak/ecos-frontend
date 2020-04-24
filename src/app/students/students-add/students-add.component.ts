@@ -2,9 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {FosAssignDialogComponent} from '../../fos/fos-assign-dialog/fos-assign-dialog.component';
 import {StudentsService} from '../students.service';
-import {IStudent} from '../IStudent';
-import {IPersonalData} from '../../shared/IPersonalData';
-import {ICorrespondenceAddress} from '../../shared/ICorrespondenceAddress';
+import {Student} from '../Student';
+import {PersonalData} from '../../shared/PersonalData';
+import {CorrespondenceAddress} from '../../shared/CorrespondenceAddress';
+import {FieldOfStudy} from "../../fos/FieldOfStudy";
+import {Assignment} from "../../assignments/Assignment";
+import {Class} from "../../shared/Class";
 
 @Component({
   templateUrl: './students-add.component.html',
@@ -12,21 +15,10 @@ import {ICorrespondenceAddress} from '../../shared/ICorrespondenceAddress';
 })
 export class StudentsAddComponent implements OnInit {
   private studentsService: StudentsService;
-  studentToAdd: IStudent = new IStudent();
-  personalData: IPersonalData = new class implements IPersonalData {
-    firstName: string;
-    lastName: string;
-    peselNumber: string;
-    phoneNumber: string;
-  };
-  correspondenceAddress: ICorrespondenceAddress = new class implements ICorrespondenceAddress {
-    addressLine1: string;
-    addressLine2: string;
-    addressLine3: string;
-    city: string;
-    voivodeship: string;
-    zipCode: string;
-  };
+  studentToAdd: Student = new Student();
+  fieldOfStudy: FieldOfStudy = new FieldOfStudy()
+  personalData: PersonalData = new PersonalData()
+  correspondenceAddress: CorrespondenceAddress = new CorrespondenceAddress()
 
   constructor(private dialog: MatDialog,
               studentService: StudentsService) {
@@ -52,7 +44,8 @@ export class StudentsAddComponent implements OnInit {
       data: 'Czy chcesz przypisać studenta do kierunku?',
     });
     dialogRef.afterClosed().subscribe(result => {
-      this.studentToAdd.fieldsOfStudy = result;
+      this.fieldOfStudy.fieldOfStudy = result
+      this.studentToAdd.fieldsOfStudy = this.fieldOfStudy;
       this.studentToAdd.personalData = this.personalData;
       this.studentToAdd.correspondenceAddress = this.correspondenceAddress;
       this.createStudent()

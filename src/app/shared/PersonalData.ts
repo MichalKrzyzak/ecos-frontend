@@ -1,4 +1,4 @@
-export interface IPersonalData {
+export class PersonalData {
   firstName: string;
   lastName: string;
   peselNumber: string;

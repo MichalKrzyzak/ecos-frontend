@@ -27,7 +27,7 @@
           <td>{{student?.personalData?.lastName}}</td>
           <td>{{student?.email}}</td>
           <td>{{student?.collegeId}}</td>
-          <td>{{student?.active ? "Tak" : "Nie"}}</td>
+          <td>{{student?.isActive ? "Tak" : "Nie"}}</td>
           <td>
             <button class="btn btn-ecos-dark" [routerLink]="'/student/' + student.id">Szczegóły</button>
           </td>

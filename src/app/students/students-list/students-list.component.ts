@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {IStudent} from '../IStudent';
+import {Student} from '../Student';
 import {StudentsService} from '../students.service';
-import {IPersonalData} from '../../shared/IPersonalData';
-import {ICorrespondenceAddress} from '../../shared/ICorrespondenceAddress';
+import {PersonalData} from '../../shared/PersonalData';
+import {CorrespondenceAddress} from '../../shared/CorrespondenceAddress';
 
 @Component({
   selector: 'pm-students-list',
@@ -13,10 +13,10 @@ export class StudentsListComponent implements OnInit {
   private studentsService;
   pageTitle = 'Lista studentów';
   _listFilter: string;
-  personalData: IPersonalData;
-  correspondenceAddress: ICorrespondenceAddress;
-  filterStudents: IStudent[];
-  students: IStudent[];
+  personalData: PersonalData;
+  correspondenceAddress: CorrespondenceAddress;
+  filterStudents: Student[];
+  students: Student[];
 
   constructor(studentService: StudentsService) {
     this.studentsService = studentService;
@@ -47,9 +47,9 @@ export class StudentsListComponent implements OnInit {
     this.filterStudents = this.listFilter ? this.applyFilter(this.listFilter) : this.students;
   }
 
-  applyFilter(filterBy: string): IStudent[] {
+  applyFilter(filterBy: string): Student[] {
     filterBy = filterBy.toLocaleLowerCase();
-    return this.students.filter((student: IStudent) =>
+    return this.students.filter((student: Student) =>
       student.personalData.firstName.toLocaleLowerCase().indexOf(filterBy) !== -1 || student.personalData.lastName.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
 }

@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {FieldOfStudyService} from '../field-of-study.service';
-import {IFieldOfStudy} from '../IFieldOfStudy';
+import {FieldOfStudy} from '../FieldOfStudy';
 
 @Component({
   templateUrl: './fos-assign-dialog.component.html',
@@ -9,8 +9,8 @@ import {IFieldOfStudy} from '../IFieldOfStudy';
 })
 export class FosAssignDialogComponent {
   private fieldOfStudyService: FieldOfStudyService;
-  public selectedFieldOfStudy: IFieldOfStudy;
-  fieldsOfStudy: IFieldOfStudy[];
+  public selectedFieldOfStudy: FieldOfStudy;
+  fieldsOfStudy: FieldOfStudy[];
   isButtonVisible: boolean = false;
   whetherToAdd: boolean;
 

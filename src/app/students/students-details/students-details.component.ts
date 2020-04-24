@@ -1,22 +1,22 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {StudentsService} from '../students.service';
-import {IStudent} from '../IStudent';
-import {IPersonalData} from '../../shared/IPersonalData';
-import {ICorrespondenceAddress} from '../../shared/ICorrespondenceAddress';
-import {IFieldOfStudy} from '../../fos/IFieldOfStudy';
-import {IGrades} from '../../grades/IGrades';
+import {Student} from '../Student';
+import {PersonalData} from '../../shared/PersonalData';
+import {CorrespondenceAddress} from '../../shared/CorrespondenceAddress';
+import {FieldOfStudy} from '../../fos/FieldOfStudy';
+import {Grades} from '../../grades/Grades';
 
 @Component({
   templateUrl: './students-details.component.html',
   styleUrls: ['./students-details.component.css']
 })
 export class StudentsDetailsComponent implements OnInit {
-  student: IStudent;
-  personalData: IPersonalData;
-  correspondenceAddress: ICorrespondenceAddress;
-  fieldOfStudy: IFieldOfStudy[];
-  grades: IGrades[];
+  student: Student;
+  personalData: PersonalData;
+  correspondenceAddress: CorrespondenceAddress;
+  fieldOfStudy: FieldOfStudy;
+  grades: Grades[];
   isEditable: boolean = false;
   successMessage: string;
 
@@ -45,7 +45,7 @@ export class StudentsDetailsComponent implements OnInit {
 
   deactivateStudent() {
     let id = +this.route.snapshot.paramMap.get('id');
-    this.student.active = false;
+    this.student.isActive = false;
 
     this.updateStudent(id)
   }
