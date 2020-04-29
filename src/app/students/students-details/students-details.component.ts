@@ -6,6 +6,8 @@ import {PersonalData} from '../../shared/PersonalData';
 import {CorrespondenceAddress} from '../../shared/CorrespondenceAddress';
 import {FieldOfStudy} from '../../fos/FieldOfStudy';
 import {Grades} from '../../grades/Grades';
+import {ClassService} from "../../class/class.service";
+import {Class} from "../../class/Class";
 
 @Component({
   templateUrl: './students-details.component.html',
@@ -22,7 +24,8 @@ export class StudentsDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private studentsService: StudentsService,
-              private router: Router) {
+              private router: Router,
+              private classService: ClassService) {
   }
 
   ngOnInit() {

@@ -1,1 +1,83 @@
-<p>teachers-add works!</p>
+<div class="wrapper">
+  <div id="formContent">
+    <div id="formHeader" class="card-header">
+      Dodaj nauczyciela
+    </div>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Dane osobowe
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <li class="mat-form-field">
+          <mat-form-field>
+            <mat-label>Imię</mat-label>
+            <input [(ngModel)]="this.personalData.firstName" matInput type="text" minlength="3" required>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Nazwisko</mat-label>
+            <input [(ngModel)]="this.personalData.lastName" matInput type="text" required>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>PESEL</mat-label>
+            <input [(ngModel)]="this.personalData.peselNumber" matInput type="text" minlength="11" maxlength="11" required>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>E-mail</mat-label>
+            <input [(ngModel)]="this.teacherToAdd.email" matInput type="text" required>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Nr telefonu</mat-label>
+            <input [(ngModel)]="this.personalData.phoneNumber" matInput type="text" minlength="9" maxlength="9"  required>
+          </mat-form-field>
+        </li>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Dane adresowe
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <li class="mat-form-field">
+          <mat-form-field>
+            <mat-label>Ulica</mat-label>
+            <input [(ngModel)]="this.correspondenceAddress.correspondence_street" matInput type="text" required>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Nr domu</mat-label>
+            <input [(ngModel)]="this.correspondenceAddress.correspondence_house_number" matInput type="text" required>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Nr mieszkania</mat-label>
+            <input [(ngModel)]="this.correspondenceAddress.correspondence_apartment_number" matInput type="text">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Kod pocztowy</mat-label>
+            <input [(ngModel)]="this.correspondenceAddress.zipCode" matInput type="text" required>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Miejscowość</mat-label>
+            <input [(ngModel)]="this.correspondenceAddress.city" matInput type="text" required>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Województwo</mat-label>
+            <input [(ngModel)]="this.correspondenceAddress.voivodeship" matInput type="text" required>
+          </mat-form-field>
+        </li>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <div id="formFooter">
+      <button type="submit" class="btn btn-ecos-dark" (click)="createTeacher()" >Dodaj</button>
+    </div>
+  </div>
+</div>

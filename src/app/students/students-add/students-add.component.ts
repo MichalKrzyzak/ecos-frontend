@@ -6,8 +6,7 @@ import {Student} from '../Student';
 import {PersonalData} from '../../shared/PersonalData';
 import {CorrespondenceAddress} from '../../shared/CorrespondenceAddress';
 import {FieldOfStudy} from "../../fos/FieldOfStudy";
-import {Assignment} from "../../assignments/Assignment";
-import {Class} from "../../shared/Class";
+import {Router} from "@angular/router";
 
 @Component({
   templateUrl: './students-add.component.html',
@@ -15,14 +14,17 @@ import {Class} from "../../shared/Class";
 })
 export class StudentsAddComponent implements OnInit {
   private studentsService: StudentsService;
+  private router: Router;
   studentToAdd: Student = new Student();
   fieldOfStudy: FieldOfStudy = new FieldOfStudy()
   personalData: PersonalData = new PersonalData()
   correspondenceAddress: CorrespondenceAddress = new CorrespondenceAddress()
 
   constructor(private dialog: MatDialog,
-              studentService: StudentsService) {
+              studentService: StudentsService,
+              router: Router) {
     this.studentsService = studentService;
+    this.router = router;
   }
 
   ngOnInit() {
@@ -48,7 +50,9 @@ export class StudentsAddComponent implements OnInit {
       this.studentToAdd.fieldsOfStudy = this.fieldOfStudy;
       this.studentToAdd.personalData = this.personalData;
       this.studentToAdd.correspondenceAddress = this.correspondenceAddress;
+      console.log(this.studentToAdd.correspondenceAddress)
       this.createStudent()
+      this.router.navigateByUrl("/students")
       console.log(this.studentToAdd)
     });
   }

@@ -6,7 +6,7 @@ import {Assignment} from "../assignments/Assignment";
 export class Class {
   className: string;
   students: Student[];
-  teachers: Teacher[];
+  teacher: Teacher;
   fieldOfStudy: FieldOfStudy;
   assignments: Assignment[];
 }

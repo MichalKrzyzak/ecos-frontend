@@ -1,17 +1,17 @@
 <div class="card shadow" *ngIf="student && student.personalData">
   <div class="card-header bg-dark ecos-head">
     <h5>{{student.personalData.firstName + ' ' + student.personalData.lastName}}</h5>
-<!--    <h6>{{ TODO wyświetlić główny kierunek studenta }}</h6>-->
+    <h6>{{student.fieldsOfStudy?.fieldOfStudy}}</h6>
   </div>
   <div class="card-body">
-    <mat-tab-group>
+    <mat-tab-group mat-stretch-tabs>
       <mat-tab label="Dane osobowe">
         <fieldset [disabled]="!isEditable">
           <div class="row" style="max-width: 500px">
             <div class="flex-column" style="margin: 15px 0 0 15px;">
               <label>Imię</label>
               <div class="form-group">
-                <input type="text" class="form-control ecos-form-field"[(ngModel)]="this.student.personalData.firstName">
+                <input type="text" class="form-control ecos-form-field" [(ngModel)]="this.student.personalData.firstName">
               </div>
               <label>Nazwisko</label>
               <div class="form-group">
@@ -32,7 +32,7 @@
                 <input type="text" class="form-control ecos-form-field" [(ngModel)]="this.student.email">
               </div>
               <label>Status studenta</label>
-                <mat-select [(value)]="this.student.active" [disabled]="!isEditable" [placeholder]="this.student.active ? 'Tak' : 'Nie'">
+                <mat-select [(value)]="this.student.isActive" [disabled]="!isEditable" [placeholder]="this.student.isActive ? 'Tak' : 'Nie'">
                   <mat-option value="true">Tak</mat-option>
                   <mat-option value="false">Nie</mat-option>
                 </mat-select>
@@ -46,15 +46,15 @@
             <div class="flex-column" style="margin: 15px 0 0 15px;">
               <label>Ulica</label>
               <div class="form-group">
-                <input type="text" class="form-control ecos-form-field" [(ngModel)]="this.student.correspondenceAddress.addressLine1">
+                <input type="text" class="form-control ecos-form-field" [(ngModel)]="this.student.correspondenceAddress.correspondence_street">
               </div>
               <label>Nr domu</label>
               <div class="form-group">
-                <input type="text" class="form-control ecos-form-field" [(ngModel)]="this.student.correspondenceAddress.addressLine2">
+                <input type="text" class="form-control ecos-form-field" [(ngModel)]="this.student.correspondenceAddress.correspondence_house_number">
               </div>
               <label>Nr mieszkania</label>
               <div class="form-group">
-                <input type="text" class="form-control ecos-form-field" [(ngModel)]="this.student.correspondenceAddress.addressLine3">
+                <input type="text" class="form-control ecos-form-field" [(ngModel)]="this.student.correspondenceAddress.correspondence_apartment_number">
               </div>
             </div>
             <div class="flex-column" style="margin: 15px 0 0 15px;">

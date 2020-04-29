@@ -3,7 +3,7 @@ import {ICommonService} from '../shared/ICommonService';
 import {FieldOfStudy} from './FieldOfStudy';
 import {Observable, throwError} from 'rxjs';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
-import {catchError, retry} from 'rxjs/operators';
+import {catchError} from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -13,7 +13,7 @@ export class FieldOfStudyService implements ICommonService<FieldOfStudy> {
   private fosBaseUrl = 'http://localhost:8080/fieldOfStudy';
 
   constructor(private http: HttpClient) {
-    console.log('FieldOfStudy service created...');
+    console.log('FOS service created...');
   }
 
   httpOptions = {
@@ -25,7 +25,6 @@ export class FieldOfStudyService implements ICommonService<FieldOfStudy> {
   getAll(): Observable<FieldOfStudy[]> {
     console.log('Fetching all fields of study...');
     return this.http.get<FieldOfStudy[]>(this.fosBaseUrl).pipe(
-      retry(1),
       catchError(this.errorHandler)
     );
   }
@@ -33,7 +32,6 @@ export class FieldOfStudyService implements ICommonService<FieldOfStudy> {
   create(arg0: FieldOfStudy): Observable<FieldOfStudy> {
     console.log('Creating field of study: ' + JSON.stringify(arg0));
     return this.http.post<FieldOfStudy>(this.fosBaseUrl, JSON.stringify(arg0), this.httpOptions).pipe(
-      retry(1),
       catchError(this.errorHandler)
     );
   }

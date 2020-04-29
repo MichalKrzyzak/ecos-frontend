@@ -5,7 +5,6 @@ import {PersonalData} from '../../shared/PersonalData';
 import {CorrespondenceAddress} from '../../shared/CorrespondenceAddress';
 
 @Component({
-  selector: 'pm-students-list',
   templateUrl: './students-list.component.html',
   styleUrls: ['./students-list.component.css'],
 })

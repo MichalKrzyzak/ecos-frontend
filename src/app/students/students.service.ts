@@ -25,7 +25,6 @@ export class StudentsService implements IIdOperationService<Student> {
   getAll(): Observable<Student[]> {
     console.log('Fetching all students...');
     return this.http.get<Student[]>(this.studentBaseUrl).pipe(
-      retry(1),
       catchError(this.errorHandler)
     );
   }
@@ -33,7 +32,6 @@ export class StudentsService implements IIdOperationService<Student> {
   getById(id): Observable<Student> {
     console.log('Fetching student by id ' + id);
     return this.http.get<Student>(this.studentBaseUrl + '/id/' + id).pipe(
-      retry(1),
       catchError(this.errorHandler)
     );
   }
@@ -41,7 +39,6 @@ export class StudentsService implements IIdOperationService<Student> {
   create(student: Student): Observable<Student> {
     console.log('Creating student: ' + JSON.stringify(student));
     return this.http.post<Student>(this.studentBaseUrl, JSON.stringify(student), this.httpOptions).pipe(
-      retry(1),
       catchError(this.errorHandler)
     );
   }
@@ -49,7 +46,6 @@ export class StudentsService implements IIdOperationService<Student> {
   updateById(id, data: Student): Observable<Student> {
     console.log('Updating student: ' + JSON.stringify(data));
     return this.http.put<Student>(this.studentBaseUrl + '/id/' + id, JSON.stringify(data), this.httpOptions).pipe(
-      retry(1),
       catchError(this.errorHandler)
     );
   }
@@ -57,7 +53,6 @@ export class StudentsService implements IIdOperationService<Student> {
   deleteById(id): Observable<Student> {
     console.log('Deleting student:' + id);
     return this.http.delete<Student>(this.studentBaseUrl + 'id/' + id).pipe(
-      retry(1),
       catchError(this.errorHandler)
     );
   }

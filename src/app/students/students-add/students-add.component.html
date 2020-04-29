@@ -37,7 +37,7 @@
 
             <mat-form-field>
               <mat-label>Nr telefonu</mat-label>
-              <input [(ngModel)]="this.personalData.phoneNumber" matInput type="text" required>
+              <input [(ngModel)]="this.personalData.phoneNumber" matInput type="text" minlength="9" maxlength="9" required>
             </mat-form-field>
           </li>
         </mat-expansion-panel>
@@ -50,17 +50,17 @@
           <li class="mat-form-field">
             <mat-form-field>
               <mat-label>Ulica</mat-label>
-              <input [(ngModel)]="this.correspondenceAddress.addressLine1" matInput type="text" required>
+              <input [(ngModel)]="this.correspondenceAddress.correspondence_street" matInput type="text" required>
             </mat-form-field>
 
             <mat-form-field>
               <mat-label>Nr domu</mat-label>
-              <input [(ngModel)]="this.correspondenceAddress.addressLine2" matInput type="text" required>
+              <input [(ngModel)]="this.correspondenceAddress.correspondence_house_number" matInput type="text" required>
             </mat-form-field>
 
             <mat-form-field>
               <mat-label>Nr mieszkania</mat-label>
-              <input [(ngModel)]="this.correspondenceAddress.addressLine3" matInput type="text">
+              <input [(ngModel)]="this.correspondenceAddress.correspondence_apartment_number" matInput type="text">
             </mat-form-field>
 
             <mat-form-field>
@@ -81,7 +81,7 @@
         </mat-expansion-panel>
       </mat-accordion>
     <div id="formFooter">
-      <button type="submit" class="btn btn-ecos-dark" (click)="openDialog()" >Dodaj</button>
+      <button type="submit" class="btn btn-ecos-dark" (click)="openDialog()">Dodaj</button>
     </div>
   </div>
 </div>

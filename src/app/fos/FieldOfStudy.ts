@@ -1,5 +1,5 @@
 import {Student} from '../students/Student';
-import {Class} from "../shared/Class";
+import {Class} from "../class/Class";
 
 export class FieldOfStudy {
   fieldOfStudy: string;

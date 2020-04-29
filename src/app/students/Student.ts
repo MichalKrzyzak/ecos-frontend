@@ -1,7 +1,7 @@
 import {PersonalData} from '../shared/PersonalData';
 import {CorrespondenceAddress} from '../shared/CorrespondenceAddress';
 import {FieldOfStudy} from "../fos/FieldOfStudy";
-import {Class} from "../shared/Class";
+import {Class} from "../class/Class";
 import {Grades} from "../grades/Grades";
 
 export class Student {

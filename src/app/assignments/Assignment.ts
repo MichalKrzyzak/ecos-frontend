@@ -1,4 +1,4 @@
-import {Class} from "../shared/Class";
+import {Class} from "../class/Class";
 
 export class Assignment {
   assignment: string;

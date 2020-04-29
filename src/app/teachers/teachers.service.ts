@@ -3,12 +3,17 @@ import {Teacher} from './Teacher';
 import {Observable, throwError} from 'rxjs';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {catchError, retry} from 'rxjs/operators';
+import {Injectable} from "@angular/core";
 
+@Injectable({
+    providedIn: 'root'
+  }
+)
 export class TeachersService implements IIdOperationService<Teacher> {
   private teacherBaseUrl = 'http://localhost:8080/teachers';
 
   constructor(private http: HttpClient) {
-    console.log('Student service created...');
+    console.log('Teacher service created...');
   }
 
   httpOptions = {
@@ -20,7 +25,6 @@ export class TeachersService implements IIdOperationService<Teacher> {
   getAll(): Observable<Teacher[]> {
     console.log('Fetching all teachers...');
     return this.http.get<Teacher[]>(this.teacherBaseUrl).pipe(
-      retry(1),
       catchError(this.errorHandler)
     );
   }
@@ -28,7 +32,6 @@ export class TeachersService implements IIdOperationService<Teacher> {
   getById(id): Observable<Teacher> {
     console.log('Fetching teacher by id ' + id);
     return this.http.get<Teacher>(this.teacherBaseUrl + '/id/' + id).pipe(
-      retry(1),
       catchError(this.errorHandler)
     );
   }
@@ -36,7 +39,6 @@ export class TeachersService implements IIdOperationService<Teacher> {
   create(teacher: Teacher): Observable<Teacher> {
     console.log('Creating teacher: ' + teacher);
     return this.http.post<Teacher>(this.teacherBaseUrl, JSON.stringify(teacher), this.httpOptions).pipe(
-      retry(1),
       catchError(this.errorHandler)
     );
   }
@@ -44,7 +46,6 @@ export class TeachersService implements IIdOperationService<Teacher> {
   updateById(id, data: Teacher): Observable<Teacher> {
     console.log('Updating teacher: ' + data);
     return this.http.put<Teacher>(this.teacherBaseUrl + '/id/' + id, JSON.stringify(data), this.httpOptions).pipe(
-      retry(1),
       catchError(this.errorHandler)
     );
   }
@@ -52,7 +53,6 @@ export class TeachersService implements IIdOperationService<Teacher> {
   deleteById(id): Observable<Teacher> {
     console.log('Deleting teacher:' + id);
     return this.http.delete<Teacher>(this.teacherBaseUrl + 'id/' + id).pipe(
-      retry(1),
       catchError(this.errorHandler)
     );
   }
